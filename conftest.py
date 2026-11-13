@@ -50,3 +50,10 @@ def rating(api, auth, pizza_id):
     made = res.json()
     yield made
     api.delete(f"/api/ratings/{made['id']}", headers=auth)
+
+
+@pytest.fixture
+def other_auth(api):
+    """Authorization header for a second newly registered user."""
+    return log_in_new_user(api)
+
